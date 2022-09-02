@@ -1,0 +1,106 @@
+﻿@model BiviProject.Models.ApplicationUser
+
+@{
+    Layout = "~/Views/Shared/_LayoutII.cshtml";
+}
+
+
+<div class="contact_us_page_wrappe" style="min-height:500px">
+    <div class="cnt_page_overla"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-12 col-sm-12">
+                        <div class="cnt_icon_wrapper wow zoomIn animated shadow" data-wow-duration="1.3s" style="visibility: visible; animation-duration: 1.3s; animation-name: zoomIn;">
+                            <div class="cnt-icon-img" style="margin-top:">
+                                <i class="fa fa-list-alt stretched-link" aria-hidden="true"></i>
+                            </div>
+                            <div class="cnt-icon-context">
+                                <a  asp-action="CreateCategoryView" asp-controller="Admin" class="stretched-link">
+
+                                    Product-Category
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-12 col-sm-12">
+                        <div class="cnt_icon_wrapper wow zoomIn animated shadow" data-wow-duration="1.3s" style="visibility: visible; animation-duration: 1.3s; animation-name: zoomIn;">
+                            <div class="cnt-icon-img" style="margin-top:11px">
+                                <i class="fa fa-database stretched-link" aria-hidden="true"></i>
+                            </div>
+                            <div class="cnt-icon-context">
+                                <a asp-action="CreateCategoryView" asp-controller="Admin" class="stretched-link">
+
+                                    Sub-Catergory
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3 col-md-3 col-12 col-sm-12">
+                        <div class="cnt_icon_wrapper wow zoomIn animated shadow" data-wow-duration="1.3s" style="visibility: visible; animation-duration: 1.3s; animation-name: zoomIn;">
+                            <div class="cnt-icon-img" style="margin-top:5px">
+                                <i class="fa fa-database" aria-hidden="true"></i>
+                            </div>
+                            <div class="cnt-icon-context">
+                                <a asp-action="CreateCategoryView" asp-controller="Admin" class="stretched-link">
+
+                                    Catergory
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-lg-3 col-md-3 col-12 col-sm-12">
+                        <div class="cnt_icon_wrapper wow zoomIn animated shadow" data-wow-duration="1.3s" style="visibility: visible; animation-duration: 1.3s; animation-name: zoomIn;">
+                            <div class="cnt-icon-img" style="margin-top:11px">
+                                <i class="fa fa-shopping-bag stretched-link" aria-hidden="true"></i>
+                            </div>
+                            <div class="cnt-icon-context">
+                                <a asp-action="CreateProductList" asp-controller="Admin" class="stretched-link">
+
+                                    Products
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-12 col-sm-12">
+                        <div class="cnt_icon_wrapper wow zoomIn animated shadow" data-wow-duration="1.3s" style="visibility: visible; animation-duration: 1.3s; animation-name: zoomIn;">
+                            <div class="cnt-icon-img" style="margin-top:11px">
+                                <i class="fa fa-map-marker stretched-link" aria-hidden="true"></i>
+                            </div>
+                            <div class="cnt-icon-context">
+                                <a class="" asp-action="CreateCategoryView" asp-controller="Admin">
+                                    <br />
+                                    Locations
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-12 col-sm-12 pt-3">
+                        <div class="cnt_icon_wrapper wow zoomIn animated shadow" data-wow-duration="1.3s" style="visibility: visible; animation-duration: 1.3s; animation-name: zoomIn;">
+                            <div class="cnt-icon-img" style="margin-top:11px">
+                                <i class="fa fa-rocket stretched-link" aria-hidden="true"></i>
+                            </div>
+                            <div class="cnt-icon-context">
+                                <a  class="stretched-link"  asp-action="CreateCategoryView" asp-controller="Admin">
+                                    <br />
+                                    Services
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

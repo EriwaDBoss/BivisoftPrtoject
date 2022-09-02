@@ -1,0 +1,74 @@
+﻿@model BiviProject.Models.Message
+
+@{
+    ViewBag.Title = "Message";
+}
+
+@if (Model != null)
+{
+    switch (Model.Type)
+    {
+        case 1:
+            {
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>@Model.Description</strong>
+                </div>
+
+                break;
+            }
+        case 2:
+            {
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+
+                    <strong>@Model.Description</strong>
+                </div>
+
+                break;
+
+            }
+        case 3:
+            {
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+
+                    <strong>@Model.Description</strong>
+                </div>
+
+                break;
+            }
+    }
+
+
+
+
+}
+
+<script>
+    function newSuccessAlert(message, url) {
+        Swal.fire({
+            icon: 'success',
+            text: message,
+            confirmButtonColor: "#ff851a",
+        }).then((isConfirm) => {
+            if (isConfirm) {
+                location.reload(url);
+            }
+        })
+    }
+
+    function successAlertWithRedirect(message, url) {
+        swal.fire({
+            title: "Success",
+            text: message,
+            icon: "success",
+            timer: 30000,
+            overlay: "background - color: rgba(43, 165, 137, 0.45)",
+            confirmButtonColor: "#ff851a",
+        }).then(function () {
+
+            location.href = url;
+        })
+    }
+</script>

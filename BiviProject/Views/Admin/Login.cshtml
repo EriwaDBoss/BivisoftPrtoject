@@ -1,0 +1,35 @@
+﻿@model BiviProject.Models.ApplicationUser
+
+
+@{
+
+    //Layout = "_Layout.cshtml";
+}
+
+
+<div class="container">
+    <h2  class="text-center p-1 mt-1"><strong>Login Form</strong></h2>
+    <div class="card border border-success rounded-lg mx-auto" style="width:600px">
+        <div class="card-body">
+            <form id="design" asp-controller="Admin" asp-action="Login">
+                <div class="form-group">
+                    <label asp-for="Email">Email:</label>
+                    <input type="email" asp-for="Email" class="form-control" id="email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password">Password:</label>
+                    <input type="password" asp-for="Password" class="form-control" placeholder="Enter password">
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

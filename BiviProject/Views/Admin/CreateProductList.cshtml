@@ -1,0 +1,217 @@
+﻿@model BiviProject.ViewModel.ProductViewModel
+
+
+@{
+    Layout = "~/Views/Shared/_LayoutII.cshtml";
+}
+
+
+
+<style>
+    body {
+        counter-reset: Serial; /* / Set the Serial counter to 0 /*/
+    }
+
+    tr td:first-child:before {
+        counter-increment: Serial; /* / Increment the Serial counter /*/
+        content: counter(Serial); /*  / Display the counter /*/
+    }
+</style>
+
+
+<div class="row pt-2">
+    <div class="col-8"></div>
+    <div class="col">
+        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Add Product
+        </a>
+    </div>
+</div>
+
+
+<div class="contact_us_page_wrappe" style="min-height:500px">
+
+    @if (TempData["Message"] != null)
+    {
+
+        var tempDatamessage = (BiviProject.Models.Message)TempData["Message"];
+        <partial name="_Message" model="tempDatamessage" />
+    }
+    <div class="sp_fm_contact_section" style="padding-top:30px">
+        <div class="container">
+            @if (Model.Products.Count > 0)
+            {
+
+                <div class="card border border-success rounded-lg mx-auto" style="width:700px">
+                    <div class="card-body">
+                        <div class="row">
+
+                            <table id="example" class="table table-striped " style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>S/N</th>
+                                        <th class="width_table1">Name</th>
+                                        <th class="width_table1">KeyWord</th>
+                                        <th class="width_table1">Price</th>
+                                        <th class="width_table1">DateCreated</th>
+                                        <th class="width_table1">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var data in Model.Products)
+                                    {
+                                        <tr>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <div class="media cs-media">
+
+                                                    <div class="media-body">
+                                                        <h5>@data.Name </h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="media cs-media">
+
+                                                    <div class="media-body">
+                                                        <h5>@data.Keywords </h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="media cs-media">
+
+                                                    <div class="media-body">
+                                                        <h5>@data.Price </h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+
+                                            <td class="text-center col-2">
+                                                <a asp-controller="Admin" asp-action="Edits" asp-route-id="@data.Id" class="btn bg-primary"><i class="fa fa-pencil p-1"></i></a>
+                                                <a asp-controller="Admin" asp-action="Delete" asp-route-id="@data.Id" class="btn bg-danger"> <i class="fa fa-trash p-1"></i></a>
+                                            </td>
+
+                                        </tr>
+                                    }
+
+
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <p>No product yet</p>
+
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Product end -->
+<!-- The Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+
+            <form asp-controller="Admin" method="post" asp-action="CreateProductList">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-10 p-2">  <h4 class="modal-title text-center">Add Product </h4>    </div>
+                        <div class="col-2">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Name" class="sr-only">Name</label>
+                        <input type="text" asp-for="Name" class="require form-control" placeholder="Name" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Price" class="sr-only">Price</label>
+                        <input type="text" id="editProductPrice" asp-for="Price" class="require form-control" placeholder="Price" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Keywords" class="sr-only">Keyword</label>
+                        <input type="text" id="editKeyword" asp-for="Keywords" class="require form-control" placeholder="Keywords" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Quatity" class="sr-only">Quantity</label>
+                        <input type="text" asp-for="Quatity" multiple class="require form-control" placeholder="Quatity" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Discription" class="sr-only">Discription</label>
+                        <textarea id="editDiscription" asp-for="Discription" rows="4" class="require form-control" placeholder="Discription"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="sr-only">EnumCategory</label>
+                        <select asp-for="CategoryId" asp-items="@(new SelectList(@ViewBag.Category,"Id", "Name" ))" class="require form-control"></select>
+                    </div>
+
+                    <div class="form-group offset-4">
+                        <button type="submit" class="btn btn-primary  px-4 ">Create</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!--<div class="container">
+    <h2>Modal Example</h2>-->
+    <!-- Button to Open the Modal -->
+    <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Open modal
+    </button>-->
+
+    <!-- The Modal -->
+    <!--<div class="modal" id="">
+        <div class="modal-dialog">
+            <div class="modal-content">-->
+
+                <!-- Modal Header -->
+                <!--<div class="modal-header">
+                    <h4 class="modal-title">Delete Product Data</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>-->
+
+                <!-- Modal body -->
+                <!--<div class="modal-body">
+                    <p>Are you sure you want to delete this category data</p>
+                    <input type="button" name="name" value="" id="tg" hidden />
+                    <div class="btn-group">
+                        <a>Yes</a>
+                        <a>No</a>
+                    </div>-->
+
+                    <!-- Modal footer -->
+                    <!--<div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+        </div>
+    </div>
+
+</div>-->

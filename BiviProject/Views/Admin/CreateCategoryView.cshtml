@@ -1,0 +1,241 @@
+﻿@model BiviProject.ViewModel.CategoryViewModel
+
+
+@{
+    Layout = "~/Views/Shared/_LayoutII.cshtml";
+}
+
+<style>
+    body {
+        counter-reset: Serial; /* / Set the Serial counter to 0 /*/
+    }
+
+    tr td:first-child:before {
+        counter-increment: Serial; /* / Increment the Serial counter /*/
+        content: counter(Serial); /*  / Display the counter /*/
+    }
+</style>
+
+<div class="row pt-2">
+    <div class="col-8"></div>
+    <div class="col">
+        <button href="#" class="btn btn-primary" data-toggle="modal" data-target="#mymodal">
+            Add Category
+        </button>
+    </div>
+</div>
+
+<div class="contact_us_page_wrappe" style="min-height:500px">
+    @if (TempData["Message"] != null)
+    {
+
+        var tempDatamessage = (BiviProject.Models.Message)TempData["Message"];
+        <partial name="_Message" model="tempDatamessage" />
+    }
+    <div class="sp_fm_contact_section mt-5">
+        <div class="container">
+            @if (Model.Categories.Count > 0)
+            {
+
+                <div class="card border border-success rounded-lg mx-auto" style="width:700px">
+                    <div class="card-body">
+                        <div class="row">
+
+                            <table id="example" class="table table-striped ">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th class="width_table1">Name</th>
+                                        <th class="width_table1">Discription</th>
+                                        <th class="width_table1">DateCreated</th>
+                                        <th class="width_table1">Title</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var data in Model.Categories)
+                                    {
+                                        <tr>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <div class="media cs-media">
+
+                                                    <div class="media-body">
+                                                        <h5>@data.Name </h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="media cs-media">
+
+                                                    <div class="media-body">
+                                                        <h5>@data.Discription </h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="media cs-media">
+
+                                                    <div class="media-body">
+                                                        <h5>@data.DateCreated </h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                <div class="media cs-media">
+
+                                                    <div class="media-body">
+                                                        <h5>@data.Title </h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+
+                                            <td class="text-center col-2">
+                                                <a asp-controller="Admin" asp-action="Edit" asp-route-id="@data.Id" bg-primary">
+                                                    <i class="fa fa-pencil p-1"></i>
+                                                </a>
+                                                @*<a asp-controller="Admin" asp-action="Delete" asp-route-id="@data.Id" class="text-danger"><i class="fa fa-trash p-1"></i></a>*@
+
+                                                <a asp-controller="Admin" asp-action="Delete"  asp-route-id="@data.Id"  data-toggle="modal" data-target="#myModal" onclick="Delete('@data.Id')"><i class="fa fa-trash btn btn-danger btn-sm"></i></a>
+                                            </td>
+
+                                        </tr>
+                                    }
+
+
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <p>No category yet</p>
+
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Category end -->
+<!-- The Modal -->
+<div class="modal fade" id="mymodal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+
+            <form asp-controller="Admin" asp-action="CreateCategoryView">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-10 p-2">  <h4 class="modal-title text-center">Add Category </h4>    </div>
+                        <div class="col-2">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="sr-only">Name</label>
+                        <input type="text" id="editProductName" asp-for="Name" class="require form-control" placeholder="Name" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="sr-only">Price</label>
+                        <input type="text" id="editProductPrice" asp-for="Discription" class="require form-control" placeholder="Discription" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="sr-only">EnumCategory</label>
+                        <select type="text" asp-items="@(new SelectList(@ViewBag.Category,"Id", "Name" ))" class="require form-control" placeholder="Name"></select>
+                    </div>
+
+                    <div class="form-group offset-4">
+                        <button type="submit" class="btn btn-primary  px-4 ">Create</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Delete Category</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <p class="text-danger font-weight-bold">Are you sure you want to delete your category info</p>
+                <input type="text" id="deleteId" hidden />
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-md" onclick="deleteInfo()" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-primary btn-md" data-dismiss="modal">No</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script>
+        function Delete(id) {
+            $("#deleteId").val(id);
+                
+        }
+
+        function deleteInfo() {
+            debugger;
+            var id = $("#deleteId").val();
+            location.href = '/Admin/Delete?id=' + id;
+        }
+    </script>
+
+
+
+
+    @*<script>
+
+        function remove(id) {
+            debugger;
+            $.ajax({
+                type: 'POST',
+                dataType: 'Json',
+                url: '/Admin/DeleteData',
+                data:
+                {
+                    id: id
+                },
+                success: function (result) {
+                    debugger;
+                    if (!result.isError) {
+                        successAlert("Payment Succesfully Approved");
+                    }
+                    else {
+                        errorAlert("Internal error occured , try again.");
+                    }
+                }
+
+            });
+        }
+
+    </script>*@

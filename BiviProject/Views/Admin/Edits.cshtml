@@ -1,0 +1,60 @@
+﻿@model BiviProject.ViewModel.ProductViewModel
+
+
+
+<div class="main-wrapper" style="margin-left:320px">
+    <div class="container">
+        <div class="class="card border border-success rounded-lg mx-auto" style="width:600px"">
+
+            <form asp-controller="Admin" asp-action="Edits">
+                <!-- Modal body -->
+                <div class="body">
+                    <div class="row">
+                        <div class="col-10 p-2">  <h4 class=" text-center">Edit Product </h4>    </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label  asp-for="Name" class="pr-1">Name</label>
+                        <input type="text" id="editProduct" asp-for="Name" class="require form-control" placeholder="Name" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <label  placeholder="Discription">Discription</label>
+                        <input type="text" id="editProduct" asp-for="Discription" class="require form-control" placeholder="Discription" />
+                    </div>
+
+
+                    <input type="text" asp-for="Id" class="require form-control" hidden />
+
+
+
+                    <div class="form-group">
+                            <label  asp-for="Keyword">Keyword</label>
+                            <input type="text" id="editKeyword" asp-for="Keywords" class="require form-control" placeholder="Keyword" />
+                    </div>
+
+                        <div class="form-group">
+                            <label  asp-for="Quantity">Quantity</label>
+                            <input type="text" asp-for="Quatity" multiple class="require form-control" placeholder="Quantity" />
+                        </div>
+
+                        @*<div class="form-group">
+                            <label class="sr-only">Discription</label>
+                            <textarea id="editDiscription" asp-for="Category.Discription" rows="4" class="require form-control"></textarea>
+                        </div>*@
+
+                    <div class="form-group">
+                        <label class="sr-only">EnumCategory</label>
+                        <input type="text" asp-for="EnumCategory" id="editCategory" class="require form-control" placeholder="Product" readonly />
+                    </div>
+
+                    <div class="form-group offset-4">
+                        <button type="submit" class="btn btn-primary  px-4 ">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

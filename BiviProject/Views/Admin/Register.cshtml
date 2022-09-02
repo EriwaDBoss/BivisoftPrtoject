@@ -1,0 +1,63 @@
+﻿@model BiviProject.Models.ApplicationUser
+
+
+@{
+
+    ViewBag.Title = "User Registration";
+}
+
+
+<div class="main-wrapper">
+    <div class="container">
+        <h2 class="text-center"><strong>Register</strong></h2>
+        <div class="card border border-success rounded-lg mx-auto" style="width:600px">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6 m-auto">
+                        <form id="design" method="post" asp-controller="Admin" asp-action="Register">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Email">Email:</label>
+                                <input type="email" asp-for="Email" class="form-control" id="email" placeholder="Enter email">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Password">Password:</label>
+                                <input type="password" asp-for="Password" class="form-control" id="pwd" placeholder="Enter password">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="ConfirmPassword">Confirm Password:</label>
+                                <input asp-for="ConfirmPassword" type="password" class="form-control" id="pwd" placeholder="Enter Confirm Password">
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary float-lg-right">Register</button>
+                        </form>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+   
+    
+
+
+    @*<form action="/" method="post">
+            <div class="form-group">
+                <label> Email: </label>
+                <input type="email" name="email" placeholder="Enter your email" id="email" />
+            </div>
+
+            <div class="form-group">
+                <label> Password: </label>
+                <input type="password" name="password" placeholder="Enter your password" id="password" />
+            </div>
+        </form>*@
+</div>

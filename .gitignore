@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/BiviProject/.vs/BiviProject
+/BiviProject/obj
+/BiviProject/bin/Debug/net5.0
+/BiviProject/Properties

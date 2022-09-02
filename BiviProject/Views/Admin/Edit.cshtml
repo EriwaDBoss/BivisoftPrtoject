@@ -1,0 +1,47 @@
+﻿@model BiviProject.ViewModel.CategoryViewModel
+<div class="main-wrapper">
+    <div class="container">
+        <div class="card border border-success rounded-lg mx-auto" style="width:600px">
+
+            <form asp-controller="Admin" asp-action="Edit">
+                <!-- Modal body -->
+                <div class="body">
+                    <div class="row">
+                        <div class="col-10 p-2">  <h4 class=" text-center">Edit Category </h4>    </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Name">Name</label>
+                        <input type="text" id="editCategory" asp-for="Name" class="require form-control" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Discription">Discription</label>
+                        <input type="text" id="editCategory" asp-for="Discription" class="require form-control" />
+                    </div>
+
+
+                    <input type="text" asp-for="Id" class="require form-control" hidden />
+
+                    <div class="form-group">
+                        <label class="sr-only">EnumCategory</label>
+                        <input type="text" asp-for="EnumCategory" id="editCategory" class="require form-control" readonly />
+                    </div>
+
+                    <div class="form-group offset-4">
+                        <button type="submit" class="btn btn-primary  px-4 ">Update</button>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
